@@ -10,7 +10,6 @@ export class AppComponent {
  title = 'app';
  nombre:string;
  apellidos:string;
- nacimiento:number;
  localidad:string;
  cuenta:number;
  trabajo:number;
