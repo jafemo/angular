@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Proyecto javi montañez</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style media="screen">
+/*COLORES QUE TIENES PARA ELEGIR EL FONDO DEL CRNET*/
+    .claro{
+      background: rgba(235,233,249,1);
+      background: -moz-linear-gradient(left, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 28%, rgba(206,199,236,1) 51%, rgba(193,191,234,1) 100%);
+      background: -webkit-gradient(left top, right top, color-stop(0%, rgba(235,233,249,1)), color-stop(28%, rgba(216,208,239,1)), color-stop(51%, rgba(206,199,236,1)), color-stop(100%, rgba(193,191,234,1)));
+      background: -webkit-linear-gradient(left, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 28%, rgba(206,199,236,1) 51%, rgba(193,191,234,1) 100%);
+      background: -o-linear-gradient(left, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 28%, rgba(206,199,236,1) 51%, rgba(193,191,234,1) 100%);
+      background: -ms-linear-gradient(left, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 28%, rgba(206,199,236,1) 51%, rgba(193,191,234,1) 100%);
+      background: linear-gradient(to right, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 28%, rgba(206,199,236,1) 51%, rgba(193,191,234,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebe9f9', endColorstr='#c1bfea', GradientType=1 );
+      }
+
+    .oscuro{
+      background: rgba(169,3,41,1);
+      background: -moz-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(109,0,25,1) 100%);
+      background: -webkit-gradient(left top, right top, color-stop(0%, rgba(169,3,41,1)), color-stop(100%, rgba(109,0,25,1)));
+      background: -webkit-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(109,0,25,1) 100%);
+      background: -o-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(109,0,25,1) 100%);
+      background: -ms-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(109,0,25,1) 100%);
+      background: linear-gradient(to right, rgba(169,3,41,1) 0%, rgba(109,0,25,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=1 );
+
+          }
+
+    .brillante{
+      background: rgba(241,231,103,1);
+      background: -moz-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+      background: -webkit-gradient(left top, right top, color-stop(0%, rgba(241,231,103,1)), color-stop(100%, rgba(254,182,69,1)));
+      background: -webkit-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+      background: -o-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+      background: -ms-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+      background: linear-gradient(to right, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645', GradientType=1 );
+    }
+
+    </style>
+
+</head>
+  <body>
+    <!--LE HE PUESTO BOOSTRAP PARA CENTRARLO TODO BIEN CON ESTA CLASE-->
+    <div class="text-center">
+      <!-- LE DAMOS NOMBRE A LA CLASE DE LA CARD-->
+      <div class="card">
+        <!-- CLASS PARA ELEGIR EL COLOR DE FONDO-->
+        <div [ngClass]="{claro:cuenta==1,oscuro:cuenta==2,brillante:cuenta==3}">
+            <h2 class="text-center">Proyecto personal</h2>
+              <img src="https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png"  style="width:300px" class="img-responsive center-block">
+              <!-- PASAMOS A LOS CAMPOS A RELLENAR SON SIMPLES 'H1,2...'-->
+              <div class="container">
+                  <h4>Nombre:{{nombre}}</h4>
+                  <h4 >Apellidos:{{apellidos}}</h4>
+                  <h4>Localidad:{{localidad}}</h4>
+                  <!-- PONEMOS SWITCH PARA ELEGIR UNA OPCION Y QUE SALGA UN MENSAJE-->
+                  <div [ngSwitch]="trabajo">
+                  <h4><p *ngSwitchCase="0">¿Trabajar?:Si</p></h4>
+                  <h4><p *ngSwitchCase="1">¿Trabajar?:No</p></h4>
+                  <h4><p *ngSwitchCase="2">¿Trabajar?:Te lo explico...</p></h4>
+                </div>
+              </div>
+        </div>
+    </div>
+    <!-- PASAMOS A LOS CAMPOS QUE HAY QUE RELLENAR PARA QUE SALGA POR PANTALLA, INPUTS-->
+    <div class="contenido">
+            Nombre:<input type="text" name="" id="nombre" (keyup)="escribir($event);"><br>
+            Apellidos:<input type="text" name="" id="apellidos" (keyup)="escribir($event);"><br>
+            Localidad:<input type="text" name="" id="localidad" (keyup)="escribir($event);"><br>
+            Color de fondo?:<br>
+            <!-- OPCIONES A ELEGIR DE COLOR FONDO-->
+            <select name="" (change)="color($event);"><br>
+              <option value="1">Clarito</option><br>
+              <option value="2">Oscuro</option><br>
+              <option value="3">Brillante</option><br>
+            </select> <br>
+            <!-- OPCION PARA ELEGIR SI TE GUSTA TRABAJAR-->
+            ¿Te gusta trabajar?:  <br>
+              <select name="" (change)="opcion($event);">
+                <option value="0">Si</option>
+                <option value="1">No</option>
+                <option value="2">A veces</option>
+            </select>
+      </div>
+    </div>
+  </body>
+</html>
